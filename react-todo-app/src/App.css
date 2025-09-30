@@ -40,6 +40,7 @@ main { max-width: 720px; margin: 24px auto; padding: 0 16px; text-align: center;
 
 /* small screens */
 @media (max-width: 480px) {
+  
   .form { flex-direction: column; }
   .form button { width: 100%; }
 }
