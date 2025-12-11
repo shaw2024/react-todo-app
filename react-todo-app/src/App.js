@@ -8,7 +8,7 @@ export default function App() {
   // Dark mode
   const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem("darkMode");
-    return saved ? JSON.parse(saved) : false;
+    return saved ? JSON.parse(saved) : true; // Default to dark mode
   });
 
   // todo state with more features
@@ -33,7 +33,11 @@ export default function App() {
   // Save dark mode to localStorage
   useEffect(() => {
     localStorage.setItem("darkMode", JSON.stringify(darkMode));
-    document.body.classList.toggle("dark-mode", darkMode);
+    if (darkMode) {
+      document.body.classList.remove("light-mode");
+    } else {
+      document.body.classList.add("light-mode");
+    }
   }, [darkMode]);
 
   // Show notification
@@ -145,7 +149,7 @@ export default function App() {
           onClick={() => setDarkMode(!darkMode)}
           title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
         >
-          {darkMode ? "☀️" : "🌙"}
+          <span>{darkMode ? "☀️" : "🌙"}</span>
         </button>
       </header>
 
